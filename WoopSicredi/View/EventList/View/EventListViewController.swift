@@ -13,6 +13,7 @@ class EventsListViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     private var viewModel: EventListViewModel!
+    var coordinator: MainCoordinator?
     @IBOutlet weak var tableView: UITableView!
     
     static func instantiate(viewModel: EventListViewModel) -> EventsListViewController {
@@ -29,6 +30,12 @@ class EventsListViewController: UIViewController {
         viewModel.fetchEventViewModel().observe(on: MainScheduler.instance).bind(to: tableView.rx.items(cellIdentifier: "eventCell")){ index, eventViewModel, cell in
             cell.textLabel?.text = eventViewModel.title
         }.disposed(by: disposeBag)
+        
+        tableView.rx
+            .modelSelected(EventViewModel.self)
+            .subscribe(onNext: { [self] value in
+                coordinator?.goToEventDetail()
+            }).disposed(by: disposeBag)
 
     }
     

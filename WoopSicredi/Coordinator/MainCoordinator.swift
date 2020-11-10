@@ -11,14 +11,23 @@ import UIKit
 class MainCoordinator {
     
     private let window: UIWindow
+    private let navigationController: UINavigationController
     
-    init (window: UIWindow) {
+    init (window: UIWindow, navigationController: UINavigationController = UINavigationController()) {
         self.window = window
+        self.navigationController = navigationController
     }
     func start() {
         let viewController = EventsListViewController.instantiate(viewModel: EventListViewModel())
-        let navigationController = UINavigationController(rootViewController: viewController)
+        viewController.coordinator = self
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func goToEventDetail(){
+        let destinationViewController = EventDetailViewController.instantiate()
+        self.navigationController.pushViewController(destinationViewController, animated: true)
+        
     }
 }
