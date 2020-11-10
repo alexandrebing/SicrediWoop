@@ -27,8 +27,11 @@ class EventsListViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "Eventos"
         navigationController?.navigationBar.prefersLargeTitles = true
-        viewModel.fetchEventViewModel().observe(on: MainScheduler.instance).bind(to: tableView.rx.items(cellIdentifier: "eventCell")){ index, eventViewModel, cell in
-            cell.textLabel?.text = eventViewModel.title
+        tableView.rx.setDelegate(self).disposed(by: disposeBag)
+        viewModel.fetchEventViewModel().observe(on: MainScheduler.instance).bind(to: tableView.rx.items){ (tableView, row, item) -> UITableViewCell in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell") as! EventListTableViewCell
+            cell.setData(title: item.title, imageURL: item.imageURL)
+            return cell
         }.disposed(by: disposeBag)
         
         tableView.rx
@@ -50,3 +53,8 @@ class EventsListViewController: UIViewController {
 
 }
 
+extension EventsListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
+}

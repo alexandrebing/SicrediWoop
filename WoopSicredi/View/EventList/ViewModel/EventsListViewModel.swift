@@ -31,6 +31,9 @@ struct EventViewModel {
     var title: String {
         return event.title
     }
+    var imageURL: String {
+        return event.image
+    }
     
     init(event: Event) {
         self.event = event
