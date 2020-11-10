@@ -16,7 +16,7 @@ class MainCoordinator {
         self.window = window
     }
     func start() {
-        let viewController = EventsListViewController.instantiate()
+        let viewController = EventsListViewController.instantiate(viewModel: EventListViewModel())
         let navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
