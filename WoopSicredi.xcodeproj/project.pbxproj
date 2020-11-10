@@ -22,6 +22,7 @@
 		AC35EA77255AD7D5005A941D /* EventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC35EA76255AD7D5005A941D /* EventDetailViewModel.swift */; };
 		AC35EA7B255AD7F0005A941D /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC35EA7A255AD7F0005A941D /* Event.swift */; };
 		AC35EA7F255AD804005A941D /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC35EA7E255AD804005A941D /* EventService.swift */; };
+		AC35EA83255ADC80005A941D /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC35EA82255ADC80005A941D /* Participant.swift */; };
 		D7E7A4D35BC95EFCD72F312C /* Pods_WoopSicredi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465AAE9D28D37C4C4D0F33E5 /* Pods_WoopSicredi.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		AC35EA76255AD7D5005A941D /* EventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModel.swift; sourceTree = "<group>"; };
 		AC35EA7A255AD7F0005A941D /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		AC35EA7E255AD804005A941D /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
+		AC35EA82255ADC80005A941D /* Participant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		C44CC8096945B9D5C5695013 /* Pods-WoopSicrediTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoopSicrediTests.release.xcconfig"; path = "Target Support Files/Pods-WoopSicrediTests/Pods-WoopSicrediTests.release.xcconfig"; sourceTree = "<group>"; };
 		D429AC428EE7A42C8AC766C9 /* Pods-WoopSicredi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoopSicredi.release.xcconfig"; path = "Target Support Files/Pods-WoopSicredi/Pods-WoopSicredi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				AC35EA7A255AD7F0005A941D /* Event.swift */,
+				AC35EA82255ADC80005A941D /* Participant.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				AC1EDCCF2559FAAF00E9C194 /* AppDelegate.swift in Sources */,
 				AC35EA77255AD7D5005A941D /* EventDetailViewModel.swift in Sources */,
 				AC35EA7F255AD804005A941D /* EventService.swift in Sources */,
+				AC35EA83255ADC80005A941D /* Participant.swift in Sources */,
 				AC1EDCD12559FAAF00E9C194 /* SceneDelegate.swift in Sources */,
 				AC35EA66255AD642005A941D /* EventsListViewModel.swift in Sources */,
 			);

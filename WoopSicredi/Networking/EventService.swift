@@ -6,3 +6,9 @@
 //
 
 import Foundation
+import RxSwift
+
+protocol EventServiceProtocol{
+    func fetchEvents()
+    //func postInterestedParticipant()
+}
