@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class EventsListViewController: UIViewController {
+    
+    let disposeBag = DisposeBag()
     
     static func instantiate() -> EventsListViewController {
         let storyboard = UIStoryboard(name: "EventsList", bundle: .main)
@@ -20,6 +24,10 @@ class EventsListViewController: UIViewController {
         navigationItem.title = "Eventos"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         // Do any additional setup after loading the view.
+        let service = EventService()
+        service.fetchEvents().observe(on: MainScheduler.instance).subscribe { result in
+            print(result)
+        }.disposed(by: disposeBag)
     }
 
 
