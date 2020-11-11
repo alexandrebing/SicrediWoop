@@ -32,6 +32,10 @@ class EventsListViewController: UIViewController {
     private func setupNavBar() {
         navigationItem.title = "Eventos"
         navigationController?.navigationBar.prefersLargeTitles = true
+        let color = UIColor(named: "WoopGreen")
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: color as Any]
+        navigationController?.navigationBar.titleTextAttributes =  [NSAttributedString.Key.foregroundColor: color as Any]
+        navigationController?.navigationBar.tintColor = color
     }
     
     private func setupTableView() {
