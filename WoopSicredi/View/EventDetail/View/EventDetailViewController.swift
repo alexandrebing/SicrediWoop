@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 import RxSwift
 import RxCocoa
 
@@ -13,6 +14,10 @@ class EventDetailViewController: UIViewController {
     
     private var viewModel: EventDetailViewModel!
     @IBOutlet weak var eventTitle: UILabel!
+    @IBOutlet weak var eventImageView: UIImageView!
+    @IBOutlet weak var EventDescriptionLabel: UILabel!
+    @IBOutlet weak var eventMapView: MKMapView!
+    
     
     let disposeBag = DisposeBag()
     
@@ -28,6 +33,11 @@ class EventDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         viewModel.getEventTitle().observe(on: MainScheduler.instance).bind(to: eventTitle.rx.text).disposed(by: disposeBag)
+        viewModel.getEventDescription().observe(on: MainScheduler.instance).bind(to: EventDescriptionLabel.rx.text).disposed(by: disposeBag)
+        viewModel.image.asObservable().bind(to: self.eventImageView.rx.image).disposed(by: self.disposeBag)
+        viewModel.downloadImage(imageView: eventImageView)
+        viewModel.getEventLocationView().observe(on: MainScheduler.instance).bind(to: eventMapView.rx.region).disposed(by: disposeBag)
+        
     }
 
 }

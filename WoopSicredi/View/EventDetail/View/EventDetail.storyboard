@@ -3,6 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,21 +14,88 @@
             <objects>
                 <viewController storyboardIdentifier="EventDetail" id="TFV-ym-N6G" customClass="EventDetailViewController" customModule="WoopSicredi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gda-KI-rAm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWQ-lA-oMp">
-                                <rect key="frame" x="151" y="356" width="91" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNK-qg-wCH">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pba-gS-ELH">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="855.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feira de adoção de animais na Redenção" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWQ-lA-oMp">
+                                                <rect key="frame" x="10" y="210" width="355" height="75"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="75" id="1Ha-Ru-OJI"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <color key="textColor" name="WoopPurple"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJx-gu-UvH">
+                                                <rect key="frame" x="10" y="295" width="355" height="200.5"/>
+                                                <mutableString key="text">O Patas Dadas estará na Redenção, nesse domingo, com cães para adoção e produtos à venda!\n\nNa ocasião, teremos bottons, bloquinhos e camisetas!\n\nTraga seu Pet, os amigos e o chima, e venha aproveitar esse dia de sol com a gente e com alguns de nossos peludinhos - que estarão prontinhos para ganhar o ♥ de um humano bem legal pra chamar de seu. \n\nAceitaremos todos os tipos de doação:\n- guias e coleiras em bom estado\n- ração (as que mais precisamos no momento são sênior e filhote)\n- roupinhas \n- cobertas \n- remédios dentro do prazo de validade</mutableString>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" name="WoopGray"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="cir-ze-hnA">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="S4i-H3-Qwg"/>
+                                                </constraints>
+                                            </imageView>
+                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PpP-sE-yFt">
+                                                <rect key="frame" x="10" y="505.5" width="355" height="300"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="Fkw-Qr-Vja"/>
+                                                </constraints>
+                                            </mapView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="QWQ-lA-oMp" secondAttribute="trailing" constant="10" id="2DQ-fh-1cw"/>
+                                            <constraint firstItem="PpP-sE-yFt" firstAttribute="leading" secondItem="pba-gS-ELH" secondAttribute="leading" constant="10" id="66m-wU-jCL"/>
+                                            <constraint firstAttribute="trailing" secondItem="cir-ze-hnA" secondAttribute="trailing" id="9E1-rD-NhU"/>
+                                            <constraint firstItem="QWQ-lA-oMp" firstAttribute="leading" secondItem="pba-gS-ELH" secondAttribute="leading" constant="10" id="9yS-Fg-rc7"/>
+                                            <constraint firstItem="IJx-gu-UvH" firstAttribute="top" secondItem="QWQ-lA-oMp" secondAttribute="bottom" constant="10" id="ANF-Es-sqf"/>
+                                            <constraint firstItem="IJx-gu-UvH" firstAttribute="leading" secondItem="pba-gS-ELH" secondAttribute="leading" constant="10" id="Bn2-fv-sD4"/>
+                                            <constraint firstItem="cir-ze-hnA" firstAttribute="leading" secondItem="pba-gS-ELH" secondAttribute="leading" id="PCQ-9C-jCM"/>
+                                            <constraint firstAttribute="trailing" secondItem="PpP-sE-yFt" secondAttribute="trailing" constant="10" id="TsG-Q3-knT"/>
+                                            <constraint firstItem="cir-ze-hnA" firstAttribute="top" secondItem="pba-gS-ELH" secondAttribute="top" id="Yj8-BF-q0e"/>
+                                            <constraint firstItem="QWQ-lA-oMp" firstAttribute="top" secondItem="cir-ze-hnA" secondAttribute="bottom" constant="10" id="bny-uw-ljX"/>
+                                            <constraint firstAttribute="bottom" secondItem="PpP-sE-yFt" secondAttribute="bottom" constant="50" id="mnd-nT-yGE"/>
+                                            <constraint firstItem="PpP-sE-yFt" firstAttribute="top" secondItem="IJx-gu-UvH" secondAttribute="bottom" constant="10" id="rwW-ME-cBw"/>
+                                            <constraint firstAttribute="trailing" secondItem="IJx-gu-UvH" secondAttribute="trailing" constant="10" id="uOD-oY-qC5"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="pba-gS-ELH" firstAttribute="top" secondItem="FNK-qg-wCH" secondAttribute="top" id="E2j-t6-Wa7"/>
+                                    <constraint firstAttribute="bottom" secondItem="pba-gS-ELH" secondAttribute="bottom" id="E7o-14-IJa"/>
+                                    <constraint firstItem="pba-gS-ELH" firstAttribute="width" secondItem="FNK-qg-wCH" secondAttribute="width" id="R4o-wO-SMD"/>
+                                    <constraint firstAttribute="trailing" secondItem="pba-gS-ELH" secondAttribute="trailing" id="Sen-Di-dSn"/>
+                                    <constraint firstItem="pba-gS-ELH" firstAttribute="height" secondItem="FNK-qg-wCH" secondAttribute="height" priority="250" id="XTx-2j-FHD"/>
+                                    <constraint firstItem="pba-gS-ELH" firstAttribute="leading" secondItem="FNK-qg-wCH" secondAttribute="leading" id="vc2-4a-aVu"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="jQP-Q2-dlt"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="evF-CE-GlF"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LUf-ne-lbp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LUf-ne-lbp" firstAttribute="trailing" secondItem="FNK-qg-wCH" secondAttribute="trailing" id="3nU-cL-YE0"/>
+                            <constraint firstItem="FNK-qg-wCH" firstAttribute="leading" secondItem="LUf-ne-lbp" secondAttribute="leading" id="Hbg-af-rTC"/>
+                            <constraint firstItem="LUf-ne-lbp" firstAttribute="bottom" secondItem="FNK-qg-wCH" secondAttribute="bottom" id="gTx-56-eyT"/>
+                            <constraint firstItem="FNK-qg-wCH" firstAttribute="top" secondItem="LUf-ne-lbp" secondAttribute="top" id="goh-dZ-JYf"/>
+                        </constraints>
                     </view>
+                    <size key="freeformSize" width="375" height="1000"/>
                     <connections>
+                        <outlet property="EventDescriptionLabel" destination="IJx-gu-UvH" id="Mju-Fz-KJ1"/>
+                        <outlet property="eventImageView" destination="cir-ze-hnA" id="mgW-sh-wAo"/>
+                        <outlet property="eventMapView" destination="PpP-sE-yFt" id="jCa-at-phQ"/>
                         <outlet property="eventTitle" destination="QWQ-lA-oMp" id="zap-vJ-gdB"/>
                     </connections>
                 </viewController>
@@ -37,6 +105,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="defaultPlaceholder" width="397" height="127"/>
+        <namedColor name="WoopGray">
+            <color red="0.49804621929999998" green="0.4980265498" blue="0.49803990129999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="WoopPurple">
+            <color red="0.3940035999" green="0.059554435310000001" blue="0.86671787499999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

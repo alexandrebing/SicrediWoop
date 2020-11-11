@@ -27,7 +27,7 @@ class EventsListViewController: UIViewController {
         super.viewDidLoad()
         setupNavBar()
         setupTableView()
-        testPost()
+        //testPost()
     }
     
     private func setupNavBar() {

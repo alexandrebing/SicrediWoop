@@ -44,7 +44,7 @@ struct EventViewModel {
         return event.latitude != nil && event.longitude != nil
     }
     var latitude: Double {
-        return event.longitude ?? 0
+        return event.latitude ?? 0
     }
     var longitude: Double {
         return event.longitude ?? 0
