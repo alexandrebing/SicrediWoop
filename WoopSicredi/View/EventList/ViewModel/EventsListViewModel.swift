@@ -24,6 +24,13 @@ final class EventListViewModel{
             }
         }
     }
+    
+    func tabelViewRowHeight() -> Observable<CGFloat> {
+        return Observable.create { observer -> Disposable in
+            observer.onNext(150.0)
+            return Disposables.create()
+        }
+    }
 }
 
 struct EventViewModel {

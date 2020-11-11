@@ -42,8 +42,9 @@ class EventsListViewController: UIViewController {
     private func setupTableView() {
         tableView.tableFooterView = UIView()
         tableView.contentInsetAdjustmentBehavior = .never
-        tableView.rx.setDelegate(self).disposed(by: disposeBag)
         
+        viewModel.tabelViewRowHeight().observe(on: MainScheduler.instance).bind(to: tableView.rx.rowHeight).disposed(by: disposeBag)
+
         viewModel.fetchEventViewModel().observe(on: MainScheduler.instance).bind(to: tableView.rx.items){ (tableView, row, item) -> UITableViewCell in
             let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell") as! EventListTableViewCell
             cell.setData(title: item.title, imageURL: item.imageURL)
@@ -73,12 +74,5 @@ class EventsListViewController: UIViewController {
             print(httpCode.element as Any)
         }.disposed(by: disposeBag)
     }
-
-
-}
-
-extension EventsListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
-    }
+    
 }
