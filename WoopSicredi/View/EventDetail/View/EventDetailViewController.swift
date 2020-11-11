@@ -21,7 +21,11 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var bottomConstraintHeight: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var submitButton: UIButton!
     
+    @IBOutlet weak var nameTextField: UITextField!
+    
+    @IBOutlet weak var emailTextField: UITextField!
     
     let disposeBag = DisposeBag()
     
@@ -36,11 +40,53 @@ class EventDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        viewModel.getEventTitle().observe(on: MainScheduler.instance).bind(to: eventTitle.rx.text).disposed(by: disposeBag)
-        viewModel.getEventDescription().observe(on: MainScheduler.instance).bind(to: EventDescriptionLabel.rx.text).disposed(by: disposeBag)
-        viewModel.image.asObservable().bind(to: self.eventImageView.rx.image).disposed(by: self.disposeBag)
+        viewModel.getEventTitle()
+            .observe(on: MainScheduler.instance)
+            .bind(to: eventTitle.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.getEventDescription()
+            .observe(on: MainScheduler.instance)
+            .bind(to: EventDescriptionLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.image.asObservable()
+            .bind(to: self.eventImageView.rx.image)
+            .disposed(by: self.disposeBag)
+        
         viewModel.downloadImage(imageView: eventImageView)
-        viewModel.getEventLocationView().observe(on: MainScheduler.instance).bind(to: eventMapView.rx.region).disposed(by: disposeBag)
+        
+        viewModel.getEventLocationView()
+            .observe(on: MainScheduler.instance)
+            .bind(to: eventMapView.rx.region)
+            .disposed(by: disposeBag)
+        
+        nameTextField.rx.text
+            .orEmpty
+            .bind(to: viewModel.participantName)
+            .disposed(by: disposeBag)
+        
+        emailTextField.rx.text
+            .orEmpty
+            .bind(to: viewModel.participantEmail)
+            .disposed(by: disposeBag)
+        
+        viewModel.isValid
+            .observe(on: MainScheduler.instance)
+            .bind(to: submitButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        viewModel.isValid
+            .observe(on: MainScheduler.asyncInstance)
+            .bind(onNext: { [weak self] response in
+                self?.submitButton.backgroundColor = (response == true) ? UIColor(named: "WoopGreen") : UIColor.gray
+            }).disposed(by: disposeBag)
+        
+        submitButton.rx.tap.subscribe { _ in
+            print("submit")
+        }.disposed(by: disposeBag)
+
+
         setupKeyboard()
     }
     

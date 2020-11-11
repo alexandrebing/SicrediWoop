@@ -125,10 +125,13 @@
                         <outlet property="EventDescriptionLabel" destination="IJx-gu-UvH" id="Mju-Fz-KJ1"/>
                         <outlet property="bottomConstraintHeight" destination="l8t-2N-kR7" id="ryG-b6-FhI"/>
                         <outlet property="contentView" destination="pba-gS-ELH" id="uVW-eB-aPV"/>
+                        <outlet property="emailTextField" destination="qFP-Lg-nXN" id="fBK-DK-zCN"/>
                         <outlet property="eventImageView" destination="cir-ze-hnA" id="mgW-sh-wAo"/>
                         <outlet property="eventMapView" destination="PpP-sE-yFt" id="jCa-at-phQ"/>
                         <outlet property="eventTitle" destination="QWQ-lA-oMp" id="zap-vJ-gdB"/>
+                        <outlet property="nameTextField" destination="Wol-m1-1eQ" id="AQw-bZ-7Jx"/>
                         <outlet property="scrollView" destination="FNK-qg-wCH" id="ZYD-3J-97y"/>
+                        <outlet property="submitButton" destination="lj0-e6-kbM" id="jIo-fk-jgb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uKC-A4-iNv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -15,11 +15,21 @@ final class EventDetailViewModel {
     private let eventService: EventServiceProtocol
     private let selectedEvent: EventViewModel
     
+    let participantName = BehaviorRelay<String>(value: "")
+    let participantEmail = BehaviorRelay<String>(value: "")
+    
+    let isValid: Observable<Bool>
+    
     let image : BehaviorRelay<UIImage?> = BehaviorRelay(value: nil)
     
     init(selectedEvent: EventViewModel, eventService: EventServiceProtocol = EventService() ) {
         self.eventService = eventService
         self.selectedEvent = selectedEvent
+        isValid = Observable.combineLatest(self.participantName.asObservable(), self.participantEmail.asObservable())
+                { (name, email) in
+                    return name.count > 0
+                        && email.count > 0
+                }
     }
     
     func getEventTitle() ->Observable<String> {
