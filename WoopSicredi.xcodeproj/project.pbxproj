@@ -16,7 +16,6 @@
 		AC1EDCDB2559FAB100E9C194 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC1EDCD92559FAB100E9C194 /* LaunchScreen.storyboard */; };
 		AC2A5E5F255B4474001728C1 /* EventListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2A5E5E255B4474001728C1 /* EventListCellViewModel.swift */; };
 		AC2DF400255B340800E40DFE /* EventListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2DF3FF255B340800E40DFE /* EventListTableViewCell.swift */; };
-		AC2DF40A255B40B400E40DFE /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2DF409255B40B300E40DFE /* UIImageViewExtensions.swift */; };
 		AC35EA34255AD198005A941D /* WoopSicrediTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC35EA33255AD198005A941D /* WoopSicrediTests.swift */; };
 		AC35EA5C255AD3E8005A941D /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC35EA5B255AD3E8005A941D /* MainCoordinator.swift */; };
 		AC35EA66255AD642005A941D /* EventsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC35EA65255AD642005A941D /* EventsListViewModel.swift */; };
@@ -54,7 +53,6 @@
 		AC1EDCDC2559FAB100E9C194 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC2A5E5E255B4474001728C1 /* EventListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCellViewModel.swift; sourceTree = "<group>"; };
 		AC2DF3FF255B340800E40DFE /* EventListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListTableViewCell.swift; sourceTree = "<group>"; };
-		AC2DF409255B40B300E40DFE /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		AC35EA31255AD198005A941D /* WoopSicrediTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WoopSicrediTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC35EA33255AD198005A941D /* WoopSicrediTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoopSicrediTests.swift; sourceTree = "<group>"; };
 		AC35EA35255AD198005A941D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -160,14 +158,6 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		AC2DF408255B409300E40DFE /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				AC2DF409255B40B300E40DFE /* UIImageViewExtensions.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		AC35EA32255AD198005A941D /* WoopSicrediTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,7 +188,6 @@
 		AC35EA51255AD26E005A941D /* System */ = {
 			isa = PBXGroup;
 			children = (
-				AC2DF408255B409300E40DFE /* Extensions */,
 				AC1EDCCE2559FAAF00E9C194 /* AppDelegate.swift */,
 				AC1EDCD02559FAAF00E9C194 /* SceneDelegate.swift */,
 				AC1EDCD92559FAB100E9C194 /* LaunchScreen.storyboard */,
@@ -447,7 +436,6 @@
 				AC35EA7B255AD7F0005A941D /* Event.swift in Sources */,
 				AC35EA73255AD76D005A941D /* EventDetailViewController.swift in Sources */,
 				AC1EDCD32559FAAF00E9C194 /* EventListViewController.swift in Sources */,
-				AC2DF40A255B40B400E40DFE /* UIImageViewExtensions.swift in Sources */,
 				AC2A5E5F255B4474001728C1 /* EventListCellViewModel.swift in Sources */,
 				AC35EA5C255AD3E8005A941D /* MainCoordinator.swift in Sources */,
 				AC1EDCCF2559FAAF00E9C194 /* AppDelegate.swift in Sources */,

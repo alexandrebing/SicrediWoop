@@ -29,10 +29,10 @@ final class EventListViewModel{
 struct EventViewModel {
     private let event: Event
     var title: String {
-        return event.title
+        return event.title ?? "Evento sem nome"
     }
     var imageURL: String {
-        return event.image
+        return event.image ?? ""
     }
     
     init(event: Event) {

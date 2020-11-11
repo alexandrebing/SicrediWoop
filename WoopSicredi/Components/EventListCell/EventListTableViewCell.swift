@@ -21,6 +21,7 @@ class EventListTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         viewModel.image.asObservable().bind(to: self.eventImage.rx.image).disposed(by: self.disposeBag)
+        viewModel.spinner.asObservable().bind(to: self.activityIndicator.rx.isHidden).disposed(by: self.disposeBag)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -35,14 +36,10 @@ class EventListTableViewCell: UITableViewCell {
             self.activityIndicator.startAnimating()
             self.loadImage(url)
         }
-        
     }
     
     private func loadImage(_ imageURL: URL){
-        self.viewModel.downloadImage(url: imageURL, callback: {
-            self.activityIndicator.stopAnimating()
-            self.activityIndicator.isHidden = true
-        })
+        self.viewModel.downloadImage(url: imageURL, imageView: self.eventImage)
     }
 
 }

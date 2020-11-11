@@ -10,18 +10,25 @@ import RxSwift
 import RxRelay
 
 class EventListCellViewModel {
- 
+    
     let image : BehaviorRelay<UIImage?> = BehaviorRelay(value: nil)
- 
-    func downloadImage(url: URL, callback: @escaping ()-> Void) {
-        URLSession.shared.dataTask( with: url, completionHandler: { (data, _, _) -> Void in
-            DispatchQueue.main.async {
-                if let data = data {
-                    self.image.accept(UIImage(data: data))
-                    callback()
-                }
+    let spinner : BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    
+    func downloadImage(url: URL, imageView: UIImageView) {
+        
+        DispatchQueue.main.async {
+            var image = UIImage(named: "defaultPlaceholder")
+            if let data = try? Data(contentsOf: url) {
+                image = UIImage(data: data)
             }
+            UIView.transition(with: imageView,
+                                   duration: 0.3,
+                                   options: .transitionCrossDissolve,
+                                   animations: {
+                                    self.image.accept(image)
+                                   },
+                                   completion: nil)
+            self.spinner.accept(true)
         }
-        ).resume()
     }
 }

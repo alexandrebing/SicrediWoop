@@ -27,6 +27,8 @@ class EventsListViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "Eventos"
         navigationController?.navigationBar.prefersLargeTitles = true
+        tableView.tableFooterView = UIView()
+        tableView.contentInsetAdjustmentBehavior = .never
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
         viewModel.fetchEventViewModel().observe(on: MainScheduler.instance).bind(to: tableView.rx.items){ (tableView, row, item) -> UITableViewCell in
             let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell") as! EventListTableViewCell
