@@ -38,7 +38,7 @@ class EventDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         viewModel.getEventTitle()
             .observe(on: MainScheduler.instance)
@@ -82,11 +82,32 @@ class EventDetailViewController: UIViewController {
                 self?.submitButton.backgroundColor = (response == true) ? UIColor(named: "WoopGreen") : UIColor.gray
             }).disposed(by: disposeBag)
         
-        submitButton.rx.tap.subscribe { [weak self] _ in
-            self?.viewModel.postToEventService()
+        submitButton.rx.tap.subscribe {  _ in
+            self.viewModel.postToEventService().subscribe(onNext: {
+                result in
+                if (200..<400).contains(result){
+                    self.presentAlert(title: "Sucesso", message: "Você confirmou interesse por este evento. Verifique o email fornecido para mais informações!")
+                } else if result == -1 {
+                    self.presentAlert(title: "Oops", message: "Parece que alguma coisa deu errado. Tente novamente mais tarde.")
+                }
+                
+            }, onError: { error in
+                print(error)
+                self.presentAlert(title: "Oops", message: "Parece que alguma coisa deu errado. Tente novamente mais tarde.")
+            }).disposed(by: self.disposeBag)
         }.disposed(by: disposeBag)
-
+        
+        
         setupKeyboard()
+    }
+    
+    private func presentAlert(title: String, message: String){
+        DispatchQueue.main.async{
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     private func setupKeyboard() {
@@ -96,7 +117,7 @@ class EventDetailViewController: UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         
         view.addGestureRecognizer(tap)
-
+        
     }
     
     @objc func keyboardWillShow(_ notification: NSNotification) {
@@ -122,5 +143,5 @@ class EventDetailViewController: UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-
+    
 }

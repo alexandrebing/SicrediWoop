@@ -18,24 +18,23 @@ final class EventService: EventServiceProtocol {
     // MARK: Fetch events
     func fetchEvents() -> Observable<[Event]> {
         return Observable.create { observer -> Disposable in
-            
+
             let task = URLSession.shared.dataTask(with: URL(string: "http://5f5a8f24d44d640016169133.mockapi.io/api/events")!) { data, response, error in
-                let httpResponse = response as? HTTPURLResponse
-                guard let data = data else {
-                    observer.onError(NSError(domain: "", code: httpResponse?.statusCode ?? -1, userInfo: nil) )
-                    return
+                if response != nil {
+                    do {
+                        let data = data ?? Data()
+                        let events = try JSONDecoder().decode([Event].self, from: data)
+                        observer.onNext(events)
+                    }
+                    catch {
+                        observer.onError(error)
+                    }
                 }
-                do {
-                    let events = try JSONDecoder().decode([Event].self, from: data)
-                    observer.onNext(events)
-                }
-                catch {
-                    observer.onError(error)
-                }
+                observer.onCompleted()
             }
-            
+
             task.resume()
-            
+
             return Disposables.create{
                 task.cancel()
             }

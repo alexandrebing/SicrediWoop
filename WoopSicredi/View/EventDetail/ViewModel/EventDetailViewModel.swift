@@ -55,9 +55,9 @@ final class EventDetailViewModel {
         }
     }
     
-    func postToEventService(){
+    func postToEventService() -> Observable<Int>{
         let participant = Participant(eventId: "1", name: participantName.value, email: participantEmail.value)
-        eventService.postToEvent(with: participant)
+        return eventService.postToEvent(with: participant)
     }
     
     func downloadImage(imageView: UIImageView) {
