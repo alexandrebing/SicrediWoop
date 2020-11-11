@@ -104,8 +104,10 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="activityIndicator" destination="Q9d-eK-hjB" id="2M8-6A-qV2"/>
+                                            <outlet property="eventDateLabel" destination="vdb-3s-pGx" id="txY-2Q-4Yi"/>
+                                            <outlet property="eventDistanceLabel" destination="PrG-6s-StO" id="UVt-Eb-Tdj"/>
                                             <outlet property="eventImage" destination="244-cD-tKn" id="BFX-MS-Xq7"/>
-                                            <outlet property="title" destination="449-xR-Kch" id="Zbl-gQ-hlV"/>
+                                            <outlet property="titleLabel" destination="449-xR-Kch" id="Zbl-gQ-hlV"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

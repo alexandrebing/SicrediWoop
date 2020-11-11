@@ -10,9 +10,12 @@ import RxSwift
 
 class EventListTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var eventImage: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak var eventDateLabel: UILabel!
+    @IBOutlet weak var eventDistanceLabel: UILabel!
     
     let viewModel: EventListCellViewModel = EventListCellViewModel()
     let disposeBag = DisposeBag()
@@ -32,7 +35,7 @@ class EventListTableViewCell: UITableViewCell {
     }
     
     func setData(title: String, imageURL: String){
-        self.title.text = title
+        self.titleLabel.text = title
         if let url = URL(string: imageURL){
             self.activityIndicator.startAnimating()
             self.loadImage(url)
