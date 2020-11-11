@@ -25,8 +25,9 @@ class MainCoordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func goToEventDetail(viewModel: EventViewModel){
-        let destinationViewController = EventDetailViewController.instantiate(with: viewModel)
+    func goToEventDetail(selectedEvent: EventViewModel){
+        let detailsViewModel = EventDetailViewModel(selectedEvent: selectedEvent)
+        let destinationViewController = EventDetailViewController.instantiate(with: detailsViewModel)
         self.navigationController.pushViewController(destinationViewController, animated: true)
         
     }

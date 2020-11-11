@@ -53,7 +53,7 @@ class EventsListViewController: UIViewController {
         tableView.rx
             .modelSelected(EventViewModel.self)
             .subscribe(onNext: { [self] value in
-                coordinator?.goToEventDetail(viewModel: value)
+                coordinator?.goToEventDetail(selectedEvent: value)
             }).disposed(by: disposeBag)
     }
     
