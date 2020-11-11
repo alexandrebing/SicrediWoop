@@ -135,13 +135,13 @@
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="defaultPlaceholder" width="397" height="127"/>
         <namedColor name="WoopGray">
-            <color red="0.49804621929999998" green="0.4980265498" blue="0.49803990129999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.49799999594688416" green="0.49799999594688416" blue="0.49799999594688416" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="WoopGreen">
-            <color red="0.42016917469999998" green="0.89886236190000002" blue="0.4901224971" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.41999998688697815" green="0.89899998903274536" blue="0.49000000953674316" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="WoopPurple">
-            <color red="0.3940035999" green="0.059554435310000001" blue="0.86671787499999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.39399999380111694" green="0.059999998658895493" blue="0.86699998378753662" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

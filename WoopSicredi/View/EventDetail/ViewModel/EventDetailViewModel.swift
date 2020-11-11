@@ -29,7 +29,7 @@ final class EventDetailViewModel {
                 { (name, email) in
                     return name.count > 0
                         && email.count > 0
-                }
+        }.share(replay: 1)
     }
     
     func getEventTitle() ->Observable<String> {
@@ -53,6 +53,11 @@ final class EventDetailViewModel {
             observer.onNext(region)
             return Disposables.create()
         }
+    }
+    
+    func postToEventService(){
+        let participant = Participant(eventId: "1", name: participantName.value, email: participantEmail.value)
+        eventService.postToEvent(with: participant)
     }
     
     func downloadImage(imageView: UIImageView) {

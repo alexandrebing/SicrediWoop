@@ -82,10 +82,9 @@ class EventDetailViewController: UIViewController {
                 self?.submitButton.backgroundColor = (response == true) ? UIColor(named: "WoopGreen") : UIColor.gray
             }).disposed(by: disposeBag)
         
-        submitButton.rx.tap.subscribe { _ in
-            print("submit")
+        submitButton.rx.tap.subscribe { [weak self] _ in
+            self?.viewModel.postToEventService()
         }.disposed(by: disposeBag)
-
 
         setupKeyboard()
     }

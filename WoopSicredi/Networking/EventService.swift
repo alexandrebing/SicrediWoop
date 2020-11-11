@@ -10,7 +10,7 @@ import RxSwift
 
 protocol EventServiceProtocol{
     func fetchEvents() -> Observable<[Event]>
-    //func postInterestedParticipant()
+    func postToEvent(with data: Participant) -> Observable<Int>
 }
 
 final class EventService: EventServiceProtocol {
