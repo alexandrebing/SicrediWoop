@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Participant: Decodable {
+struct Participant: Codable {
     var eventId: String
     var name: String
     var email: String

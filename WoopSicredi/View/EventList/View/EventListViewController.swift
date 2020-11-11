@@ -27,6 +27,7 @@ class EventsListViewController: UIViewController {
         super.viewDidLoad()
         setupNavBar()
         setupTableView()
+        testPost()
     }
     
     private func setupNavBar() {
@@ -61,6 +62,15 @@ class EventsListViewController: UIViewController {
         let service = EventService()
         service.fetchEvents().observe(on: MainScheduler.instance).subscribe { result in
             print(result)
+        }.disposed(by: disposeBag)
+    }
+    
+    //TODO: Remove after actual post is implemented
+    func testPost(){
+        let service = EventService()
+        let participant = Participant(eventId: "1", name: "Pedro", email: "pedro@gmail.com")
+        service.postToEvent(with: participant).observe(on: MainScheduler.instance).subscribe { httpCode in
+            print(httpCode.element as Any)
         }.disposed(by: disposeBag)
     }
 

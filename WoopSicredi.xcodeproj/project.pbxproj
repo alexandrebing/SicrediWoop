@@ -26,6 +26,7 @@
 		AC35EA7F255AD804005A941D /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC35EA7E255AD804005A941D /* EventService.swift */; };
 		AC35EA83255ADC80005A941D /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC35EA82255ADC80005A941D /* Participant.swift */; };
 		AC44BEE4255C060C00A2A66F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC44BEE3255C060C00A2A66F /* Colors.xcassets */; };
+		AC44BEE8255C128D00A2A66F /* EncodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC44BEE7255C128D00A2A66F /* EncodableExtension.swift */; };
 		D7E7A4D35BC95EFCD72F312C /* Pods_WoopSicredi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465AAE9D28D37C4C4D0F33E5 /* Pods_WoopSicredi.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		AC35EA7E255AD804005A941D /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		AC35EA82255ADC80005A941D /* Participant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		AC44BEE3255C060C00A2A66F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		AC44BEE7255C128D00A2A66F /* EncodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtension.swift; sourceTree = "<group>"; };
 		C44CC8096945B9D5C5695013 /* Pods-WoopSicrediTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoopSicrediTests.release.xcconfig"; path = "Target Support Files/Pods-WoopSicrediTests/Pods-WoopSicrediTests.release.xcconfig"; sourceTree = "<group>"; };
 		D429AC428EE7A42C8AC766C9 /* Pods-WoopSicredi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoopSicredi.release.xcconfig"; path = "Target Support Files/Pods-WoopSicredi/Pods-WoopSicredi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,6 +198,7 @@
 				AC1EDCD72559FAB100E9C194 /* Assets.xcassets */,
 				AC44BEE3255C060C00A2A66F /* Colors.xcassets */,
 				AC1EDCDC2559FAB100E9C194 /* Info.plist */,
+				AC44BEE7255C128D00A2A66F /* EncodableExtension.swift */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				AC1EDCD32559FAAF00E9C194 /* EventListViewController.swift in Sources */,
 				AC2A5E5F255B4474001728C1 /* EventListCellViewModel.swift in Sources */,
 				AC35EA5C255AD3E8005A941D /* MainCoordinator.swift in Sources */,
+				AC44BEE8255C128D00A2A66F /* EncodableExtension.swift in Sources */,
 				AC1EDCCF2559FAAF00E9C194 /* AppDelegate.swift in Sources */,
 				AC35EA77255AD7D5005A941D /* EventDetailViewModel.swift in Sources */,
 				AC35EA7F255AD804005A941D /* EventService.swift in Sources */,
