@@ -18,6 +18,10 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var EventDescriptionLabel: UILabel!
     @IBOutlet weak var eventMapView: MKMapView!
     
+    @IBOutlet weak var bottomConstraintHeight: NSLayoutConstraint!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     
     let disposeBag = DisposeBag()
     
@@ -37,7 +41,41 @@ class EventDetailViewController: UIViewController {
         viewModel.image.asObservable().bind(to: self.eventImageView.rx.image).disposed(by: self.disposeBag)
         viewModel.downloadImage(imageView: eventImageView)
         viewModel.getEventLocationView().observe(on: MainScheduler.instance).bind(to: eventMapView.rx.region).disposed(by: disposeBag)
+        setupKeyboard()
+    }
+    
+    private func setupKeyboard() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        
+        view.addGestureRecognizer(tap)
+
+    }
+    
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        if let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            bottomConstraintHeight.constant = keyboardRect.height
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+                self.contentView.layoutIfNeeded()
+            }
+        }
+        let bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.size.height)
+        scrollView.setContentOffset(bottomOffset, animated: true)
+    }
+    
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        bottomConstraintHeight.constant = 25
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+            //self.contentView.layoutIfNeeded()
+        }
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 
 }
