@@ -16,7 +16,7 @@ class EventListCellViewModel {
     
     func downloadImage(url: URL, imageView: UIImageView) {
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             var image = UIImage(named: "defaultPlaceholder")
             if let data = try? Data(contentsOf: url) {
                 image = UIImage(data: data)
@@ -25,10 +25,10 @@ class EventListCellViewModel {
                                    duration: 0.3,
                                    options: .transitionCrossDissolve,
                                    animations: {
-                                    self.image.accept(image)
+                                    self?.image.accept(image)
                                    },
                                    completion: nil)
-            self.spinner.accept(true)
+            self?.spinner.accept(true)
         }
     }
 }
