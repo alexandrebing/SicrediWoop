@@ -20,6 +20,7 @@ class EventListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.selectionStyle = UITableViewCell.SelectionStyle.none
         viewModel.image.asObservable().bind(to: self.eventImage.rx.image).disposed(by: self.disposeBag)
         viewModel.spinner.asObservable().bind(to: self.activityIndicator.rx.isHidden).disposed(by: self.disposeBag)
     }

@@ -18,15 +18,15 @@ class MainCoordinator {
         self.navigationController = navigationController
     }
     func start() {
-        let viewController = EventsListViewController.instantiate(viewModel: EventListViewModel())
+        let viewController = EventsListViewController.instantiate(with: EventListViewModel())
         viewController.coordinator = self
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func goToEventDetail(){
-        let destinationViewController = EventDetailViewController.instantiate()
+    func goToEventDetail(viewModel: EventViewModel){
+        let destinationViewController = EventDetailViewController.instantiate(with: viewModel)
         self.navigationController.pushViewController(destinationViewController, animated: true)
         
     }

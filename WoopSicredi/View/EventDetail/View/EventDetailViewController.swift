@@ -8,10 +8,14 @@
 import UIKit
 
 class EventDetailViewController: UIViewController {
-
-    static func instantiate() -> EventDetailViewController {
+    
+    private var viewModel: EventViewModel!
+    @IBOutlet weak var eventTitle: UILabel!
+    
+    static func instantiate(with viewModel: EventViewModel) -> EventDetailViewController {
         let storyboard = UIStoryboard(name: "EventDetail", bundle: .main)
         guard let viewController = storyboard.instantiateViewController(withIdentifier: "EventDetail") as? EventDetailViewController else { return EventDetailViewController()}
+        viewController.viewModel = viewModel
         return viewController
     }
     
@@ -19,6 +23,7 @@ class EventDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        eventTitle.text = viewModel.title
     }
 
 }

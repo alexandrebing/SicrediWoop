@@ -27,6 +27,9 @@
                         <viewLayoutGuide key="safeArea" id="LUf-ne-lbp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="eventTitle" destination="QWQ-lA-oMp" id="zap-vJ-gdB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uKC-A4-iNv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

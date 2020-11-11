@@ -27,9 +27,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Title" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="449-xR-Kch">
-                                                    <rect key="frame" x="122" y="13" width="243" height="53"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="449-xR-Kch">
+                                                    <rect key="frame" x="174" y="10" width="181" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -49,6 +48,9 @@
                                             <constraints>
                                                 <constraint firstItem="244-cD-tKn" firstAttribute="leading" secondItem="Gp3-4L-tPi" secondAttribute="leading" constant="14" id="7Lf-5F-Ywl"/>
                                                 <constraint firstItem="244-cD-tKn" firstAttribute="top" secondItem="Gp3-4L-tPi" secondAttribute="top" constant="10" id="GJb-cH-8JE"/>
+                                                <constraint firstItem="449-xR-Kch" firstAttribute="top" secondItem="Gp3-4L-tPi" secondAttribute="top" constant="10" id="Tm0-V2-4bU"/>
+                                                <constraint firstItem="449-xR-Kch" firstAttribute="leading" secondItem="244-cD-tKn" secondAttribute="trailing" constant="15" id="ZTc-25-0zt"/>
+                                                <constraint firstAttribute="trailing" secondItem="449-xR-Kch" secondAttribute="trailing" constant="20" id="yBY-6Q-wib"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

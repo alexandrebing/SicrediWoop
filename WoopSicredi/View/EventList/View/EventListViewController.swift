@@ -16,7 +16,7 @@ class EventsListViewController: UIViewController {
     var coordinator: MainCoordinator?
     @IBOutlet weak var tableView: UITableView!
     
-    static func instantiate(viewModel: EventListViewModel) -> EventsListViewController {
+    static func instantiate(with viewModel: EventListViewModel) -> EventsListViewController {
         let storyboard = UIStoryboard(name: "EventsList", bundle: .main)
         guard let viewController = storyboard.instantiateInitialViewController() as? EventsListViewController else { return EventsListViewController()}
         viewController.viewModel = viewModel
@@ -48,7 +48,7 @@ class EventsListViewController: UIViewController {
         tableView.rx
             .modelSelected(EventViewModel.self)
             .subscribe(onNext: { [self] value in
-                coordinator?.goToEventDetail()
+                coordinator?.goToEventDetail(viewModel: value)
             }).disposed(by: disposeBag)
     }
     
