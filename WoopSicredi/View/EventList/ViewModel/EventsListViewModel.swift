@@ -28,11 +28,35 @@ final class EventListViewModel{
 
 struct EventViewModel {
     private let event: Event
+    var eventId: String? {
+        return event.id
+    }
     var title: String {
         return event.title ?? "Evento sem nome"
     }
     var imageURL: String {
         return event.image ?? ""
+    }
+    var description: String {
+        return event.description ?? "Detalhes do evento não disponíveis"
+    }
+    var eventHasCoordinates: Bool {
+        return event.latitude != nil && event.longitude != nil
+    }
+    var latitude: Double {
+        return event.longitude ?? 0
+    }
+    var longitude: Double {
+        return event.longitude ?? 0
+    }
+    var numberOfPartcicipants: Int {
+        return event.people.count
+    }
+    var participants: [Participant] {
+        return event.people
+    }
+    var suggestedDonation: Double {
+        return event.price ?? 0
     }
     
     init(event: Event) {
