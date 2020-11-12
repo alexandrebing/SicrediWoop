@@ -27,7 +27,10 @@ class EventDetailViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     
+    let annotation = MKPointAnnotation()
+    
     let disposeBag = DisposeBag()
+    
     
     static func instantiate(with viewModel: EventDetailViewModel) -> EventDetailViewController {
         let storyboard = UIStoryboard(name: "EventDetail", bundle: .main)
@@ -39,11 +42,17 @@ class EventDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
         let share = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(shareButtonTapped))
         navigationItem.rightBarButtonItems = [share]
-        
+        setupLabels()
+        setupImage()
+        setupMap()
+        setupTextfields()
+        setupSubmitButton()
+        setupKeyboard()
+    }
+    
+    private func setupLabels() {
         viewModel.getEventTitle()
             .observe(on: MainScheduler.instance)
             .bind(to: eventTitle.rx.text)
@@ -53,18 +62,33 @@ class EventDetailViewController: UIViewController {
             .observe(on: MainScheduler.instance)
             .bind(to: EventDescriptionLabel.rx.text)
             .disposed(by: disposeBag)
-        
+    }
+    
+    private func setupImage(){
         viewModel.getEventImageURL().subscribe { value in
             if let url = URL(string: value.element ?? ""){
                 self.loadImage(url)
             }
         }.disposed(by: disposeBag)
-        
+    }
+    
+    private func setupMap(){
         viewModel.getEventLocationView()
             .observe(on: MainScheduler.instance)
             .bind(to: eventMapView.rx.region)
             .disposed(by: disposeBag)
         
+        viewModel.getEventCoordinates()
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext:{ coordinates in
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordinates
+                self.eventMapView.addAnnotation(annotation)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupTextfields() {
         nameTextField.rx.text
             .orEmpty
             .bind(to: viewModel.participantName)
@@ -74,14 +98,16 @@ class EventDetailViewController: UIViewController {
             .orEmpty
             .bind(to: viewModel.participantEmail)
             .disposed(by: disposeBag)
-        
+    }
+    
+    private func setupSubmitButton() {
         viewModel.isValid
             .observe(on: MainScheduler.instance)
             .bind(to: submitButton.rx.isEnabled)
             .disposed(by: disposeBag)
         
         viewModel.isValid
-            .observe(on: MainScheduler.asyncInstance)
+            .observe(on: MainScheduler.instance)
             .bind(onNext: { [weak self] response in
                 self?.submitButton.backgroundColor = (response == true) ? UIColor(named: "WoopGreen") : UIColor.gray
             }).disposed(by: disposeBag)
@@ -100,8 +126,6 @@ class EventDetailViewController: UIViewController {
                 self.presentAlert(title: "Oops", message: "Parece que alguma coisa deu errado. Tente novamente mais tarde.")
             }).disposed(by: self.disposeBag)
         }.disposed(by: disposeBag)
-        
-        setupKeyboard()
     }
     
     @objc func shareButtonTapped(){

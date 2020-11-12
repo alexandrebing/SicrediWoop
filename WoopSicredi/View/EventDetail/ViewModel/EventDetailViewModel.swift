@@ -53,6 +53,15 @@ final class EventDetailViewModel {
         }
     }
     
+    func getEventCoordinates() -> Observable<CLLocationCoordinate2D> {
+        return Observable.create { observer -> Disposable in
+            let coordinates = CLLocationCoordinate2D(latitude: self.selectedEvent.latitude, longitude: self.selectedEvent.longitude)
+            observer.onNext(coordinates)
+            return Disposables.create()
+        }
+        
+    }
+    
     func getEventLocationView() -> Observable<MKCoordinateRegion> {
         return Observable.create{ observer -> Disposable in
             let coordinate = CLLocationCoordinate2D(latitude: self.selectedEvent.latitude, longitude: self.selectedEvent.longitude)
