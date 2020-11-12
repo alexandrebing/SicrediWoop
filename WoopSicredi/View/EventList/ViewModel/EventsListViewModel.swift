@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 import RxSwift
 
 final class EventListViewModel{
@@ -72,6 +73,17 @@ struct EventViewModel {
               let timeInterval = event.date else { return "Sem data prevista" }
         let eventDate = currentDate.adding(seconds: (timeInterval/1000))
         return eventDate.getFullDateString()
+    }
+    
+    func getDistanceToEvent(userLocation: CLLocationCoordinate2D?) -> String {
+        guard let location = userLocation else { return "Não disponível"}
+        let clLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
+        let destinationLocation = CLLocation(latitude: self.latitude, longitude: self.longitude)
+        let distance = destinationLocation.distance(from: clLocation)
+        let kmDistance = distance/1000
+        let formattedDistance = String(format: "%.1f", kmDistance)
+        print(formattedDistance)
+        return "\(formattedDistance)Km de distância"
     }
     
     init(event: Event) {

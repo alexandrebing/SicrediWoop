@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 import RxSwift
 import RxCocoa
 
@@ -14,6 +15,8 @@ class EventsListViewController: UIViewController {
     let disposeBag = DisposeBag()
     private var viewModel: EventListViewModel!
     var coordinator: MainCoordinator?
+    let locationManager = CLLocationManager()
+    private var userCoordinates: CLLocationCoordinate2D!
     @IBOutlet weak var tableView: UITableView!
     
     static func instantiate(with viewModel: EventListViewModel) -> EventsListViewController {
@@ -27,6 +30,17 @@ class EventsListViewController: UIViewController {
         super.viewDidLoad()
         setupNavBar()
         setupTableView()
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
         //testPost()
     }
     
@@ -56,7 +70,7 @@ class EventsListViewController: UIViewController {
             })
             .bind(to: tableView.rx.items){ (tableView, row, item) -> UITableViewCell in
             let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell") as! EventListTableViewCell
-                cell.setData(title: item.title, imageURL: item.imageURL, eventParticipants: "\(item.numberOfPartcicipants) pessoas vão participar", eventDate: item.eventDate, eventDistance: "2.2km")
+                cell.setData(title: item.title, imageURL: item.imageURL, eventParticipants: "\(item.numberOfPartcicipants) pessoas vão participar", eventDate: item.eventDate, eventDistance: item.getDistanceToEvent(userLocation: self.userCoordinates))
             return cell
         }
             .disposed(by: disposeBag)
@@ -85,4 +99,13 @@ class EventsListViewController: UIViewController {
         }.disposed(by: disposeBag)
     }
     
+}
+
+extension EventsListViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        self.userCoordinates = locValue
+        self.tableView.reloadData()
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+    }
 }
