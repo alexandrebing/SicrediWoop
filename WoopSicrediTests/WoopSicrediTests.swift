@@ -37,19 +37,19 @@ class WoopSicrediTests: XCTestCase {
         super.tearDown()
     }
     
-    func testButtonDisabled() {
+    func testButtonInitiallyDisabled() {
         let buttonEnabled = viewModel.isValid.subscribe(on: scheduler)
         XCTAssertEqual([try buttonEnabled.toBlocking().first()], [false])
     }
     
     
-    func testButtonNameOnlyDisabled() {
+    func testButtonEnabledNameOnlyTyped() {
         let isButtonEnabled = viewModel.isValid.subscribe(on: scheduler)
         viewModel.participantName.accept("Alexandre")
         XCTAssertEqual([try isButtonEnabled.toBlocking().first()], [false])
     }
     
-    func testButtonEmailOnlyDisabled() {
+    func testButtonEnabledEmailOnlyTyped() {
         let isButtonEnabled = viewModel.isValid.subscribe(on: scheduler)
         viewModel.participantEmail.accept("alexandre@iCloud.com")
         XCTAssertEqual([try isButtonEnabled.toBlocking().first()], [false])
@@ -62,16 +62,38 @@ class WoopSicrediTests: XCTestCase {
         XCTAssertEqual([try isButtonEnabled.toBlocking().first()], [true])
     }
     
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testButtonEnabledTextErasedOnName(){
+        let isButtonEnabled = viewModel.isValid.subscribe(on: scheduler)
+        
+        viewModel.participantName.accept("Alexandre")
+        viewModel.participantEmail.accept("alexandre@iCloud.com")
+        
+        viewModel.participantName.accept("")
+        
+        XCTAssertEqual([try isButtonEnabled.toBlocking().first()], [false])
     }
     
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testButtonEnabledTextErasedOnEmail(){
+        let isButtonEnabled = viewModel.isValid.subscribe(on: scheduler)
+        
+        viewModel.participantName.accept("Alexandre")
+        viewModel.participantEmail.accept("alexandre@iCloud.com")
+        
+        viewModel.participantEmail.accept("")
+        
+        XCTAssertEqual([try isButtonEnabled.toBlocking().first()], [false])
+    }
+    
+    func testButtonEnabledTextErasedOnBoth(){
+        let isButtonEnabled = viewModel.isValid.subscribe(on: scheduler)
+        
+        viewModel.participantName.accept("Alexandre")
+        viewModel.participantEmail.accept("alexandre@iCloud.com")
+        
+        viewModel.participantName.accept("")
+        viewModel.participantEmail.accept("")
+        
+        XCTAssertEqual([try isButtonEnabled.toBlocking().first()], [false])
     }
     
 }
