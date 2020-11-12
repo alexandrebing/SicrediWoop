@@ -6,13 +6,12 @@ Projeto desenvolvido para listagem e detalhes de eventos patrocinados pelo Sicre
 
 ![](https://img.shields.io/badge/ios-14.1-gray)
 
-1. [Funcionalidades desenvolvidas](#funcionalidades)
-2. [Telas](#telas)
-3. [Instalação de dependências](#instalacao)
-4. [Referências](#referencias)
+1. Funcionalidades desenvolvidas
+2. Telas e fluxos
+3. Instalação
+4. Referências consultadas para o desenvolvimento
 
-<div id="funcionalidades">
-### Funcionalidades desenvolvidas
+### 1 - Funcionalidades desenvolvidas
 
 - Lista de eventos
 - Numero de participantes do evento
@@ -25,8 +24,7 @@ Projeto desenvolvido para listagem e detalhes de eventos patrocinados pelo Sicre
 - Auto-layout e Dark Mode
 
 
-<div id="telas">
-### Telas e fluxos
+### 2 - Telas e fluxos
 #### Light Mode
 ![](readmeAssets/img1.png)
 ![](readmeAssets/img2.png)
@@ -43,8 +41,7 @@ Projeto desenvolvido para listagem e detalhes de eventos patrocinados pelo Sicre
 
 
 
-<div id="instalacao">
-### Instalação
+### 3 - Instalação
 Clonar o repositório com o comando:
 
 ```
@@ -67,8 +64,7 @@ $ pod install
 Executar o arquivo `WoopSicredi.xcworkspace`
 
 
-<div id="referencias">
-### Referências consultadas para o desenvolvimento
+### 4 - Referências consultadas para o desenvolvimento
 
 [MVVM RxSwift Practical Example App | Part One: Project Setup & Coordinator | iOS 13+ | Xcode 11+](https://www.youtube.com/watch?v=Dentp0JUbyI)
 
