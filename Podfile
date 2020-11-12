@@ -12,6 +12,9 @@ target 'WoopSicredi' do
 end
 
 target 'WoopSicrediTests' do
+  pod 'RxSwift', '6.0.0-rc.1'
+  pod 'RxCocoa', '6.0.0-rc.1'
+  pod 'Kingfisher', '~> 5.15'
   pod 'RxBlocking', '6.0.0-rc.1'
   pod 'RxTest', '6.0.0-rc.1'
 end
