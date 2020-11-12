@@ -43,13 +43,23 @@ class EventsListViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.contentInsetAdjustmentBehavior = .never
         
-        viewModel.tabelViewRowHeight().observe(on: MainScheduler.instance).bind(to: tableView.rx.rowHeight).disposed(by: disposeBag)
-
-        viewModel.fetchEventViewModel().observe(on: MainScheduler.instance).bind(to: tableView.rx.items){ (tableView, row, item) -> UITableViewCell in
+        viewModel.tabelViewRowHeight()
+            .observe(on: MainScheduler.instance)
+            .bind(to: tableView.rx.rowHeight)
+            .disposed(by: disposeBag)
+        
+        viewModel.fetchEventViewModel()
+            .observe(on: MainScheduler.instance)
+            .catch({error -> Observable<[EventViewModel]> in
+                print(error)
+                return .just([])
+            })
+            .bind(to: tableView.rx.items){ (tableView, row, item) -> UITableViewCell in
             let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell") as! EventListTableViewCell
             cell.setData(title: item.title, imageURL: item.imageURL)
             return cell
-        }.disposed(by: disposeBag)
+        }
+            .disposed(by: disposeBag)
         
         tableView.rx
             .modelSelected(EventViewModel.self)

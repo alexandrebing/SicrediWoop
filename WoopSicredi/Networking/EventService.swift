@@ -29,8 +29,10 @@ final class EventService: EventServiceProtocol {
                     catch {
                         observer.onError(error)
                     }
+                } else {
+                    observer.onError(NSError(domain: "Request not found", code: 4865, userInfo: nil) )
+                    return
                 }
-                observer.onCompleted()
             }
 
             task.resume()
