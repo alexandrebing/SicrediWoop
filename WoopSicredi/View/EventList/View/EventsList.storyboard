@@ -12,7 +12,7 @@
         <!--Events List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="EventsListViewController" customModule="WoopSicredi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventList" id="BYZ-38-t0r" customClass="EventsListViewController" customModule="WoopSicredi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -55,16 +55,16 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="HM0-XA-pAF">
-                                                    <rect key="frame" x="248" y="125" width="112" height="15"/>
+                                                    <rect key="frame" x="244" y="125" width="116" height="15"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saiba mais" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdO-PB-f3y">
-                                                            <rect key="frame" x="0.0" y="0.0" width="82" height="15"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="86" height="15"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                             <color key="textColor" name="WoopGreen"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="K6n-Ol-9xd">
-                                                            <rect key="frame" x="97" y="2" width="15" height="11.5"/>
+                                                            <rect key="frame" x="101" y="2" width="15" height="11.5"/>
                                                             <color key="tintColor" name="WoopGreen"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="15" id="XRz-Mg-lZs"/>
@@ -113,17 +113,42 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pxh-2e-6Am">
+                                <rect key="frame" x="87.5" y="364" width="200" height="30"/>
+                                <color key="backgroundColor" name="WoopGreen"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="cz5-9l-fOW"/>
+                                </constraints>
+                                <state key="normal" title="Tentar novamente">
+                                    <color key="titleColor" systemColor="tertiarySystemBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="reloadData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V96-Ad-RNo"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Não foi possível carregar a página." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGF-XP-Tjh">
+                                <rect key="frame" x="56.5" y="323.5" width="262" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="WoopPurple"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="pxh-2e-6Am" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6Hl-fU-UVO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="acx-D4-Jga" secondAttribute="bottom" id="JNT-za-uM2"/>
+                            <constraint firstItem="pxh-2e-6Am" firstAttribute="top" secondItem="hGF-XP-Tjh" secondAttribute="bottom" constant="20" id="SBp-Jp-wTH"/>
+                            <constraint firstItem="hGF-XP-Tjh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="XVy-ZK-2HW"/>
+                            <constraint firstItem="hGF-XP-Tjh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pum-oI-9Zo"/>
                             <constraint firstItem="acx-D4-Jga" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rlP-JD-mhI"/>
                             <constraint firstItem="acx-D4-Jga" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tD9-hK-FTl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="acx-D4-Jga" secondAttribute="trailing" id="vxK-FG-WGw"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="noDataLabel" destination="hGF-XP-Tjh" id="2Q4-er-Ndd"/>
+                        <outlet property="reloadButton" destination="pxh-2e-6Am" id="MKn-JI-0Oq"/>
                         <outlet property="tableView" destination="acx-D4-Jga" id="zeN-Wm-PR9"/>
                     </connections>
                 </viewController>
@@ -145,6 +170,9 @@
             <color red="0.39399999380111694" green="0.059999998658895493" blue="0.86699998378753662" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

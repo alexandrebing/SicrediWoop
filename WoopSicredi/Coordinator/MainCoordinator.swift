@@ -25,6 +25,15 @@ class MainCoordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
+    func reloadEventListViewController(){
+        let vc = EventsListViewController.instantiate(with: EventListViewModel())
+        vc.coordinator = self
+        var viewcontrollers = self.navigationController.viewControllers
+        viewcontrollers.removeLast()
+        viewcontrollers.append(vc)
+        self.navigationController.setViewControllers(viewcontrollers, animated: false)
+    }
+    
     func goToEventDetail(selectedEvent: EventViewModel){
         let detailsViewModel = EventDetailViewModel(selectedEvent: selectedEvent)
         let destinationViewController = EventDetailViewController.instantiate(with: detailsViewModel)

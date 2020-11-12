@@ -11,7 +11,6 @@
 		AC1EDCCF2559FAAF00E9C194 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1EDCCE2559FAAF00E9C194 /* AppDelegate.swift */; };
 		AC1EDCD12559FAAF00E9C194 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1EDCD02559FAAF00E9C194 /* SceneDelegate.swift */; };
 		AC1EDCD32559FAAF00E9C194 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1EDCD22559FAAF00E9C194 /* EventListViewController.swift */; };
-		AC1EDCD62559FAAF00E9C194 /* EventsList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC1EDCD42559FAAF00E9C194 /* EventsList.storyboard */; };
 		AC1EDCD82559FAB100E9C194 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC1EDCD72559FAB100E9C194 /* Assets.xcassets */; };
 		AC1EDCDB2559FAB100E9C194 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC1EDCD92559FAB100E9C194 /* LaunchScreen.storyboard */; };
 		AC2DF400255B340800E40DFE /* EventListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2DF3FF255B340800E40DFE /* EventListTableViewCell.swift */; };
@@ -26,6 +25,7 @@
 		AC35EA83255ADC80005A941D /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC35EA82255ADC80005A941D /* Participant.swift */; };
 		AC44BEE4255C060C00A2A66F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC44BEE3255C060C00A2A66F /* Colors.xcassets */; };
 		AC44BEE8255C128D00A2A66F /* EncodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC44BEE7255C128D00A2A66F /* EncodableExtension.swift */; };
+		ACD2852A255DC14C00728EF2 /* EventsList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD28529255DC14C00728EF2 /* EventsList.storyboard */; };
 		ACE377BD255D63B20001419C /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE377BC255D63B20001419C /* DateExtensions.swift */; };
 		D7E7A4D35BC95EFCD72F312C /* Pods_WoopSicredi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465AAE9D28D37C4C4D0F33E5 /* Pods_WoopSicredi.framework */; };
 /* End PBXBuildFile section */
@@ -49,7 +49,6 @@
 		AC1EDCCE2559FAAF00E9C194 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC1EDCD02559FAAF00E9C194 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AC1EDCD22559FAAF00E9C194 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
-		AC1EDCD52559FAAF00E9C194 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EventsList.storyboard; sourceTree = "<group>"; };
 		AC1EDCD72559FAB100E9C194 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC1EDCDA2559FAB100E9C194 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC1EDCDC2559FAB100E9C194 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,6 +66,7 @@
 		AC35EA82255ADC80005A941D /* Participant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		AC44BEE3255C060C00A2A66F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		AC44BEE7255C128D00A2A66F /* EncodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtension.swift; sourceTree = "<group>"; };
+		ACD28529255DC14C00728EF2 /* EventsList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventsList.storyboard; sourceTree = "<group>"; };
 		ACE377BC255D63B20001419C /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		C44CC8096945B9D5C5695013 /* Pods-WoopSicrediTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoopSicrediTests.release.xcconfig"; path = "Target Support Files/Pods-WoopSicrediTests/Pods-WoopSicrediTests.release.xcconfig"; sourceTree = "<group>"; };
 		D429AC428EE7A42C8AC766C9 /* Pods-WoopSicredi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoopSicredi.release.xcconfig"; path = "Target Support Files/Pods-WoopSicredi/Pods-WoopSicredi.release.xcconfig"; sourceTree = "<group>"; };
@@ -215,7 +215,7 @@
 		AC35EA53255AD2A8005A941D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AC1EDCD42559FAAF00E9C194 /* EventsList.storyboard */,
+				ACD28529255DC14C00728EF2 /* EventsList.storyboard */,
 				AC1EDCD22559FAAF00E9C194 /* EventListViewController.swift */,
 			);
 			path = View;
@@ -366,7 +366,7 @@
 				AC1EDCDB2559FAB100E9C194 /* LaunchScreen.storyboard in Resources */,
 				AC1EDCD82559FAB100E9C194 /* Assets.xcassets in Resources */,
 				AC35EA6F255AD74C005A941D /* EventDetail.storyboard in Resources */,
-				AC1EDCD62559FAAF00E9C194 /* EventsList.storyboard in Resources */,
+				ACD2852A255DC14C00728EF2 /* EventsList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,14 +483,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AC1EDCD42559FAAF00E9C194 /* EventsList.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AC1EDCD52559FAAF00E9C194 /* Base */,
-			);
-			name = EventsList.storyboard;
-			sourceTree = "<group>";
-		};
 		AC1EDCD92559FAB100E9C194 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

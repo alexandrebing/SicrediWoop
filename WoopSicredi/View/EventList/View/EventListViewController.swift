@@ -18,6 +18,9 @@ class EventsListViewController: UIViewController {
     let locationManager = CLLocationManager()
     private var userCoordinates: CLLocationCoordinate2D!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noDataLabel: UILabel!
+    @IBOutlet weak var reloadButton: UIButton!
+    
     
     static func instantiate(with viewModel: EventListViewModel) -> EventsListViewController {
         let storyboard = UIStoryboard(name: "EventsList", bundle: .main)
@@ -66,9 +69,13 @@ class EventsListViewController: UIViewController {
             .observe(on: MainScheduler.instance)
             .catch({error -> Observable<[EventViewModel]> in
                 print(error)
+                self.noDataLabel.isHidden = false
+                self.reloadButton.isHidden = false
                 return .just([])
             })
             .bind(to: tableView.rx.items){ (tableView, row, item) -> UITableViewCell in
+                self.noDataLabel.isHidden = true
+                self.reloadButton.isHidden = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell") as! EventListTableViewCell
                 cell.setData(title: item.title, imageURL: item.imageURL, eventParticipants: "\(item.numberOfPartcicipants) pessoas vão participar", eventDate: item.eventDate, eventDistance: item.getDistanceToEvent(userLocation: self.userCoordinates))
             return cell
@@ -89,6 +96,11 @@ class EventsListViewController: UIViewController {
             print(result)
         }.disposed(by: disposeBag)
     }
+    
+    @IBAction func reloadData(_ sender: Any) {
+        coordinator?.reloadEventListViewController()
+    }
+    
     
     //TODO: Remove after actual post is implemented
     func testPost(){
