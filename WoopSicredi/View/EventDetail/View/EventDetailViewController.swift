@@ -50,12 +50,12 @@ class EventDetailViewController: UIViewController {
             .bind(to: EventDescriptionLabel.rx.text)
             .disposed(by: disposeBag)
         
-        viewModel.image.asObservable()
-            .bind(to: self.eventImageView.rx.image)
-            .disposed(by: self.disposeBag)
-        
-        viewModel.downloadImage(imageView: eventImageView)
-        
+        viewModel.getEventImageURL().subscribe { value in
+            if let url = URL(string: value.element ?? ""){
+                self.loadImage(url)
+            }
+        }.disposed(by: disposeBag)
+
         viewModel.getEventLocationView()
             .observe(on: MainScheduler.instance)
             .bind(to: eventMapView.rx.region)
@@ -108,6 +108,22 @@ class EventDetailViewController: UIViewController {
             
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    private func loadImage(_ imageURL: URL){
+        eventImageView.kf.setImage(with: imageURL,
+                              placeholder: nil,
+                              options: [.transition(.fade(1))],
+                              progressBlock: {receivedSize, totalSize in},
+                              completionHandler: {result in
+                                switch result {
+                                case.success(let value):
+                                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                                case .failure(let error):
+                                    print("Job failed: \(error.localizedDescription)")
+                                    self.eventImageView.image = UIImage(named: "defaultPlaceholder")
+                                }
+                              })
     }
     
     private func setupKeyboard() {

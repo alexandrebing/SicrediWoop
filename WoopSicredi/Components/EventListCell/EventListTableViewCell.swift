@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import Kingfisher
 
 class EventListTableViewCell: UITableViewCell {
     
@@ -17,15 +18,14 @@ class EventListTableViewCell: UITableViewCell {
     @IBOutlet weak var eventDateLabel: UILabel!
     @IBOutlet weak var eventDistanceLabel: UILabel!
     
-    let viewModel: EventListCellViewModel = EventListCellViewModel()
     let disposeBag = DisposeBag()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.selectionStyle = UITableViewCell.SelectionStyle.none
-        viewModel.image.asObservable().bind(to: self.eventImage.rx.image).disposed(by: self.disposeBag)
-        viewModel.spinner.asObservable().bind(to: self.activityIndicator.rx.isHidden).disposed(by: self.disposeBag)
+        
+        self.activityIndicator.hidesWhenStopped = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -43,7 +43,21 @@ class EventListTableViewCell: UITableViewCell {
     }
     
     private func loadImage(_ imageURL: URL){
-        self.viewModel.downloadImage(url: imageURL, imageView: self.eventImage)
+        eventImage.kf.setImage(with: imageURL,
+                              placeholder: nil,
+                              options: [.transition(.fade(1))],
+                              progressBlock: {receivedSize, totalSize in},
+                              completionHandler: {result in
+                                switch result {
+                                case.success(let value):
+                                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                                case .failure(let error):
+                                    print("Job failed: \(error.localizedDescription)")
+                                    self.eventImage.image = UIImage(named: "defaultPlaceholder")
+                                }
+                                self.activityIndicator.stopAnimating()
+                              })
     }
+    
 
 }

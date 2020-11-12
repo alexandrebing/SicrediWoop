@@ -20,7 +20,7 @@ final class EventDetailViewModel {
     
     let isValid: Observable<Bool>
     
-    let image : BehaviorRelay<UIImage?> = BehaviorRelay(value: nil)
+    let image : BehaviorRelay<String> = BehaviorRelay(value: "")
     
     init(selectedEvent: EventViewModel, eventService: EventServiceProtocol = EventService() ) {
         self.eventService = eventService
@@ -46,6 +46,13 @@ final class EventDetailViewModel {
         }
     }
     
+    func getEventImageURL() -> Observable<String> {
+        return Observable.create { observer -> Disposable in
+            observer.onNext(self.selectedEvent.imageURL)
+            return Disposables.create()
+        }
+    }
+    
     func getEventLocationView() -> Observable<MKCoordinateRegion> {
         return Observable.create{ observer -> Disposable in
             let coordinate = CLLocationCoordinate2D(latitude: self.selectedEvent.latitude, longitude: self.selectedEvent.longitude)
@@ -58,24 +65,5 @@ final class EventDetailViewModel {
     func postToEventService() -> Observable<Int>{
         let participant = Participant(eventId: "1", name: participantName.value, email: participantEmail.value)
         return eventService.postToEvent(with: participant)
-    }
-    
-    func downloadImage(imageView: UIImageView) {
-        
-        guard let url = URL(string: self.selectedEvent.imageURL) else { return }
-        
-        DispatchQueue.main.async { [weak self] in
-            var image = UIImage(named: "defaultPlaceholder")
-            if let data = try? Data(contentsOf: url) {
-                image = UIImage(data: data)
-            }
-            UIView.transition(with: imageView,
-                                   duration: 0.3,
-                                   options: .transitionCrossDissolve,
-                                   animations: {
-                                    self?.image.accept(image)
-                                   },
-                                   completion: nil)
-        }
     }
 }
