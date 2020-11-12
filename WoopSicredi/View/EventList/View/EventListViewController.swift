@@ -56,7 +56,7 @@ class EventsListViewController: UIViewController {
             })
             .bind(to: tableView.rx.items){ (tableView, row, item) -> UITableViewCell in
             let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell") as! EventListTableViewCell
-            cell.setData(title: item.title, imageURL: item.imageURL)
+                cell.setData(title: item.title, imageURL: item.imageURL, eventParticipants: "\(item.numberOfPartcicipants) pessoas vão participar", eventDate: item.eventDate, eventDistance: "2.2km")
             return cell
         }
             .disposed(by: disposeBag)

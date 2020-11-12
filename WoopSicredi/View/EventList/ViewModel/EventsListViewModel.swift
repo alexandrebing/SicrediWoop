@@ -66,6 +66,14 @@ struct EventViewModel {
         return event.price ?? 0
     }
     
+    var eventDate: String {
+        // MARK: Improvised property considering that date provides an Integer, so I picked date on time and added this Integer(divided by 1000 for a realistic result) as a TimeInterval from this picked date
+        guard let currentDate = Date.dateFromString(date: "2020-11-10T00:00"),
+              let timeInterval = event.date else { return "Sem data prevista" }
+        let eventDate = currentDate.adding(seconds: (timeInterval/1000))
+        return eventDate.getFullDateString()
+    }
+    
     init(event: Event) {
         self.event = event
     }

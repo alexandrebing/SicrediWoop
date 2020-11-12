@@ -18,6 +18,7 @@ class EventListTableViewCell: UITableViewCell {
     @IBOutlet weak var eventDateLabel: UILabel!
     @IBOutlet weak var eventDistanceLabel: UILabel!
     
+    @IBOutlet weak var eventParticipantsLabel: UILabel!
     let disposeBag = DisposeBag()
     
     override func awakeFromNib() {
@@ -34,8 +35,11 @@ class EventListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setData(title: String, imageURL: String){
+    func setData(title: String, imageURL: String, eventParticipants: String, eventDate: String, eventDistance: String){
         self.titleLabel.text = title
+        self.eventDateLabel.text = eventDate
+        self.eventDistanceLabel.text = eventDistance
+        self.eventParticipantsLabel.text = eventParticipants
         if let url = URL(string: imageURL){
             self.activityIndicator.startAnimating()
             self.loadImage(url)
