@@ -40,6 +40,10 @@ class EventDetailViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        let share = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(shareButtonTapped))
+        navigationItem.rightBarButtonItems = [share]
+        
         viewModel.getEventTitle()
             .observe(on: MainScheduler.instance)
             .bind(to: eventTitle.rx.text)
@@ -55,7 +59,7 @@ class EventDetailViewController: UIViewController {
                 self.loadImage(url)
             }
         }.disposed(by: disposeBag)
-
+        
         viewModel.getEventLocationView()
             .observe(on: MainScheduler.instance)
             .bind(to: eventMapView.rx.region)
@@ -97,8 +101,16 @@ class EventDetailViewController: UIViewController {
             }).disposed(by: self.disposeBag)
         }.disposed(by: disposeBag)
         
-        
         setupKeyboard()
+    }
+    
+    @objc func shareButtonTapped(){
+        guard let eventTitle = self.eventTitle.text,
+              let eventDescription = self.EventDescriptionLabel.text
+        else { return }
+        let textToShare = [ eventTitle, eventDescription ]
+        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
     private func presentAlert(title: String, message: String){
@@ -112,18 +124,18 @@ class EventDetailViewController: UIViewController {
     
     private func loadImage(_ imageURL: URL){
         eventImageView.kf.setImage(with: imageURL,
-                              placeholder: nil,
-                              options: [.transition(.fade(1))],
-                              progressBlock: {receivedSize, totalSize in},
-                              completionHandler: {result in
-                                switch result {
-                                case.success(let value):
-                                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
-                                case .failure(let error):
-                                    print("Job failed: \(error.localizedDescription)")
-                                    self.eventImageView.image = UIImage(named: "defaultPlaceholder")
-                                }
-                              })
+                                   placeholder: nil,
+                                   options: [.transition(.fade(1))],
+                                   progressBlock: {receivedSize, totalSize in},
+                                   completionHandler: {result in
+                                    switch result {
+                                    case.success(let value):
+                                        print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                                    case .failure(let error):
+                                        print("Job failed: \(error.localizedDescription)")
+                                        self.eventImageView.image = UIImage(named: "defaultPlaceholder")
+                                    }
+                                   })
     }
     
     private func setupKeyboard() {
