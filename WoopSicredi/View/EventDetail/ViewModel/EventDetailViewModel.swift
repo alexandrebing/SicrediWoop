@@ -72,7 +72,7 @@ final class EventDetailViewModel {
     }
     
     func postToEventService() -> Observable<Int>{
-        let participant = Participant(eventId: "1", name: participantName.value, email: participantEmail.value)
+        let participant = Participant(eventId: selectedEvent.eventId ?? "1", name: participantName.value, email: participantEmail.value)
         return eventService.postToEvent(with: participant)
     }
 }
