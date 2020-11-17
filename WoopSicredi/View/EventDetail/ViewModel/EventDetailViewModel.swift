@@ -26,9 +26,9 @@ final class EventDetailViewModel {
         self.eventService = eventService
         self.selectedEvent = selectedEvent
         isValid = Observable.combineLatest(self.participantName.asObservable(), self.participantEmail.asObservable())
-                { (name, email) in
-                    return name.count > 0
-                        && email.count > 0
+        { (name, email) in
+            return name.count > 0
+                && email.description.isEmail
         }.share(replay: 1)
     }
     

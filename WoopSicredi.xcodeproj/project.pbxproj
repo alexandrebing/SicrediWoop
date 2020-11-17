@@ -27,6 +27,7 @@
 		AC44BEE8255C128D00A2A66F /* EncodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC44BEE7255C128D00A2A66F /* EncodableExtension.swift */; };
 		ACD2852A255DC14C00728EF2 /* EventsList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD28529255DC14C00728EF2 /* EventsList.storyboard */; };
 		ACE377BD255D63B20001419C /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE377BC255D63B20001419C /* DateExtensions.swift */; };
+		ACFD595D2564846900B122C9 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD595C2564846900B122C9 /* StringExtensions.swift */; };
 		D7E7A4D35BC95EFCD72F312C /* Pods_WoopSicredi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465AAE9D28D37C4C4D0F33E5 /* Pods_WoopSicredi.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		AC44BEE7255C128D00A2A66F /* EncodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtension.swift; sourceTree = "<group>"; };
 		ACD28529255DC14C00728EF2 /* EventsList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventsList.storyboard; sourceTree = "<group>"; };
 		ACE377BC255D63B20001419C /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		ACFD595C2564846900B122C9 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		C44CC8096945B9D5C5695013 /* Pods-WoopSicrediTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoopSicrediTests.release.xcconfig"; path = "Target Support Files/Pods-WoopSicrediTests/Pods-WoopSicrediTests.release.xcconfig"; sourceTree = "<group>"; };
 		D429AC428EE7A42C8AC766C9 /* Pods-WoopSicredi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoopSicredi.release.xcconfig"; path = "Target Support Files/Pods-WoopSicredi/Pods-WoopSicredi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -275,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				ACE377BC255D63B20001419C /* DateExtensions.swift */,
+				ACFD595C2564846900B122C9 /* StringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				AC35EA7F255AD804005A941D /* EventService.swift in Sources */,
 				AC35EA83255ADC80005A941D /* Participant.swift in Sources */,
 				AC1EDCD12559FAAF00E9C194 /* SceneDelegate.swift in Sources */,
+				ACFD595D2564846900B122C9 /* StringExtensions.swift in Sources */,
 				AC2DF400255B340800E40DFE /* EventListTableViewCell.swift in Sources */,
 				AC35EA66255AD642005A941D /* EventsListViewModel.swift in Sources */,
 				ACE377BD255D63B20001419C /* DateExtensions.swift in Sources */,
